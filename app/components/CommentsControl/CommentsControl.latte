@@ -1,0 +1,41 @@
+
+{block content}
+
+{snippet comments} 
+{foreach $comments as $comments}
+<div>
+{$comments['jmeno']}
+{$comments['text']}
+    <a class="ajax" n:href="delete!,$comments->id">Smazat</a>
+</div>
+
+{/foreach}
+{/snippet}
+{snippet foo}
+{$isRated}
+{if $isRated}
+I like this <a class="ajax" n:href="unlike!">I don' like anymore</a>
+{else}
+<a class="ajax" n:href="like!">I like it</a>
+{/if}
+{/snippet}
+
+{snippet form }
+{form addCommentsForm class=>ajax}
+<table>
+    <tr>
+        <th>{label name/}</th>
+        <td>{input name}</td>         
+    </tr>
+    <tr>
+        <th>{label text/}</th>
+        <td>{input text}</td>         
+    </tr>
+    <tr>
+        <th></th>
+        <td>{input send}</td>         
+    </tr>
+</table>
+{/form}
+{/snippet}
+

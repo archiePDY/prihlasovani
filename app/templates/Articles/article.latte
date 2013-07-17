@@ -1,0 +1,13 @@
+
+{block content}
+
+    <h1>{$clanky->title}</h1>
+    <p>{$clanky->text}</p>
+
+
+{control comments}
+    <div class="clanek-odkaz"><a n:href="Articles:default" >Zpět</a></div>
+    
+{snippet flash }
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+{/snippet}

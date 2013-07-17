@@ -1,0 +1,19 @@
+
+{block content}
+<link rel="stylesheet" type="text/css" href="{$basePath}/css/colorbox.css" />
+<script type="text/javascript" src="{$basePath}/js/jquery.colorbox.js"></script>
+<h1>Colorbox</h1>
+
+<p><a class='inline'  n:href="Articles:default" ">Inline HTML</a></p>
+<p><a class='iframe' href="{link Articles:default}">Outside Webpage (Iframe)</a></p>
+
+
+<script>
+$(document).ready(function(){
+                            
+    $(".ajax").colorbox();
+    $(".inline").colorbox({ inline:true, width:"50%"});
+    $(".iframe").colorbox({ iframe:true, width:"80%", height:"80%"});
+
+});                       
+</script>

@@ -1,0 +1,87 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta name="robots" content="{$robots}" n:ifset="$robots">
+
+        <title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
+
+        <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+        <link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
+        <link rel="shortcut icon" href="{$basePath}/favicon.ico">
+        <script language="javascript" type="text/javascript" src="{$basePath}/js/jquery.js"></script>
+        <script language="javascript" type="text/javascript" src="{$basePath}/js/jquery.nette.js"></script>
+
+
+        <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+        <script language="javascript" type="text/javascript" src="{$basePath}/js/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="{$basePath}/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+        <script src="{$basePath}/js/netteForms.js"></script>
+        <script src="{$basePath}/js/main.js"></script>
+        <script src="{$basePath}/js/jquery-ui-1.8.10.custom.min"></script>
+        <link rel="stylesheet" type="text/css" href="{$basePath}/css/jquery.jqplot.css" />
+        
+        
+	{block head}{/block}
+    </head>
+
+    <body>
+        <script> document.body.className+=' js' </script>
+      
+        
+        <ul id="menu">
+            <li><a n:href="Homepage:"{ifCurrent Homepage:default} class="active"{/ifCurrent}>Homepage</a></li>
+            <li><a n:href="Articles:default" {ifCurrent Articles:*} class="active"{/ifCurrent}>Blog</a></li>
+            <li><a n:href="Homepage:jqplot" {ifCurrent Homepage:jqplot} class="active"{/ifCurrent}>Jqplot</a></li>
+            <li><a n:href="Homepage:ajax" {ifCurrent Homepage:ajax} class="active"{/ifCurrent}>Ajax</a></li>
+            <li><a n:href="Homepage:tabs" {ifCurrent Homepage:tabs} class="active"{/ifCurrent}>Taby</a></li>
+            <li><a n:href="Homepage:pdf" {ifCurrent Homepage:pdf} class="active"{/ifCurrent}>Pdf</a></li>
+            <li><a n:href="Homepage:password" {ifCurrent Homepage:password} class="active"{/ifCurrent}>Síla hesla</a></li>
+            <li><a n:href="Homepage:colorbox" {ifCurrent Homepage:colorbox} class="active"{/ifCurrent}>Colorbox</a></li>
+            <li><a n:href="Homepage:mapa" {ifCurrent Homepage:mapa} class="active"{/ifCurrent}>Mapa</a></li>
+            <li><a n:href="Homepage:session" {ifCurrent Homepage:session} class="active"{/ifCurrent}>Session</a></li>
+            
+        </ul>
+        <div class="cb"></div>
+        <div id="content">
+	{include #content}
+        </div>    
+
+	{block scripts}
+        <script>
+        jQuery.ajaxSetup({
+                cache: false,
+                dataType: 'json',
+                success: function (payload) {
+                    if (payload.snippets) {
+                        for (var i in payload.snippets) {
+                            $('#' + i).html(payload.snippets[i]);
+                        }
+                    }
+                }
+            });
+
+            $('a.ajax').live('click', function (event) {
+                event.preventDefault();
+                $.get(this.href);
+            });
+
+            $('form.ajax').live('submit', function (event) {
+                event.preventDefault();
+                $.post(this.action, $(this).serialize());
+            });
+         </script>
+         
+	{/block}
+    </body>
+</html>

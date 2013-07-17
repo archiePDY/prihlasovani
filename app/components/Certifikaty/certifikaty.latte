@@ -1,0 +1,108 @@
+
+    
+{block content}
+
+
+
+<style>
+    table.form {
+
+    }
+    .pozadi img {
+        margin-right:10px;
+        margin-top: 10px;
+        float: left;
+    }
+    .pozadi {
+        display:block;
+        min-height:120px;
+    }
+    .flash {
+        position: relative;
+        padding: 10px 20px 10px 12px;
+        color: #333;
+        font-weight: bold;
+        margin: 10px 0px;
+
+        border-left: 8px solid #941a1a;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+    }
+    .flash {
+        background: #ecfaf0;
+        border-color: #44e81e;
+    }
+    .flash.error {
+        background: #f1e5e5;
+        border-color: #e81e1e;
+    }
+</style>
+
+
+{form form}
+<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+<div n:foreach="$form->errors as $error" class="flash error">{$error}</div>
+<p>Vytvořte si dárkový poukaz pro své blízké</p>
+<select id="payments" name="payments" style="width:250px;">
+        <option value="" data-description="Zvolte pozadí certifikátu"></option>
+        <option value="jaro" data-image="../images/jaro_small.jpg" data-description="">Jarní certifikát</option>
+        <option value="slunecnice" data-image="../images/slunecnice_small.jpg" data-description="">Slunečnice</option>
+        <option value="jaro" data-image="../images/jaro_small.jpg" data-description="">Jarní certifikát</option>
+        <option value="slunecnice" data-image="../images/slunecnice_small.jpg" data-description="">Slunečnice</option>
+</select>
+<table class="form">
+    <!--
+    <tr>
+        <th>{label method/}</th>
+        <td>{input method}</td>
+    </tr>
+    -->
+    <tr>
+        <th>{label typ/}</th>
+        <td>{input typ}</td>
+    </tr>
+    <tr>
+        <th>{label titul/}</th>
+        <td>{input titul}</td>
+    </tr>
+    <!--
+    <tr>
+        <th>{label from/}</th>
+        <td>{input from}</td>
+    </tr>
+    -->
+    <tr>
+        <th>{label to/}</th>
+        <td>{input to}</td>
+    </tr>
+    <tr>
+        <th>{label length/}</th>
+        <td>{input length}</td>
+    </tr>
+    <tr>
+        <th>{label adress/}</th>
+        <td>{input adress}</td>
+    </tr>
+    <tr>
+        <th>{label email/}</th>
+        <td>{input email}</td>
+    </tr>
+    <tr>
+        <th>{label send_to/}</th>
+        <td>{input send_to}</td>
+    </tr>
+</table>
+
+
+
+
+{input send}
+{/form form}
+
+
+
+
+
+
+

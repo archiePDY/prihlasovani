@@ -1,0 +1,21 @@
+
+{block content}
+<div class="seznam-clanku">
+<div n:foreach="$clanky as $clanky">
+   <div class="clanek-odkaz"><a n:href="Articles:article?id={$clanky->id}">{$clanky->title}</a></div>
+</div>
+</div>
+<div class="cb"></div>
+<a class="ajax" n:href="reset!" >reset signals</a>
+<h1>Članky</h1>
+{snippet}
+<div n:foreach="$clanky as $clanky" class="clanek">
+    <h2>{$clanky->title}</h2>
+    <p>{$clanky->text|truncate:300}</p>
+     {control shopForm-$clanky->id}
+</div>
+{/snippet}
+
+
+
+

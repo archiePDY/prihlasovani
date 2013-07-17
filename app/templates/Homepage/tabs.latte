@@ -1,0 +1,31 @@
+
+{block content}
+
+<h1>Taby</h1>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+    $( "#tabs" ).tabs({ active: 2 });
+  });
+</script>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">prvni</a></li>
+        <li><a href="#tabs-2">druhy</a></li>
+        <li><a href="#tabs-3">treti</a></li>
+    </ul>
+    <div class="cb"></div>
+    <div id="tabs-1" class="tab-cont">
+        <p>prvni</p>
+    </div>
+    <div id="tabs-2"  class="tab-cont">
+        <p>druhy</p>
+    </div>
+    <div id="tabs-3"  class="tab-cont">    
+        <p>treti</p>
+    </div>
+</div>
