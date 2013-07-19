@@ -9,6 +9,7 @@ Debugger::enable(); // aktivujeme Laděnku
 
 
 
+
 /**
  * Base presenter for all application presenters.
  */
